@@ -1,0 +1,9 @@
+{
+  "name": "whoMessenger",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:sareh88/whoMessenger.git",
+  "author": "Sareh Almaaz <sareh.almaaz@comjoo.com>",
+  "license": "MIT",
+  "private": true
+}
