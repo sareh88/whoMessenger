@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { withStyles } from "material-ui/styles";
 import TextField from "material-ui/TextField";
 import Button from "material-ui/Button";
 import Radio, { RadioGroup } from "material-ui/Radio";
@@ -12,7 +11,7 @@ import {
 import { DatePicker } from "material-ui-pickers";
 import Typography from "material-ui/Typography/Typography";
 import moment from "moment";
-import config from '../config/config.js';
+import config from "../config/config.js";
 import { Link } from "react-router-dom";
 
 const styles = theme => ({
@@ -146,7 +145,7 @@ class UserData extends Component {
       errorMessageEmail: "",
       errorMessagedateOfBirth: "",
       errorMessageGender: "",
-      errorMessagerepeatPassword: "",
+      errorMessagerepeatPassword: ""
     });
 
     if (this.state.newUser === undefined) {
@@ -231,27 +230,24 @@ class UserData extends Component {
       }
     });
   }
-  isPasswordMatch = (formData) => {
+  isPasswordMatch = formData => {
     let password = formData.password;
     let repeatPassword = formData.newPassword;
-    if(password === repeatPassword) {
+    if (password === repeatPassword) {
       return true;
     } else {
-     this.setState({
-        errorMessagerepeatPassword:'password is not match'
-      })
+      this.setState({
+        errorMessagerepeatPassword: "password is not match"
+      });
     }
-  }
+  };
   handleSubmit(e) {
     e.preventDefault();
     console.log(this.state.newUser);
     let formData = this.state.newUser;
     let url = "http://localhost:3001/auth/signup";
 
-    
-
-    if (this.isRequierd(formData)&& this.isPasswordMatch(formData)) {
-       
+    if (this.isRequierd(formData) && this.isPasswordMatch(formData)) {
       const searchParams = Object.keys(formData)
         .map(key => {
           return (
@@ -276,7 +272,6 @@ class UserData extends Component {
             this.setState({
               generalerror: data.message
             });
-           
           }
         })
         .catch(err => console.log(err));
@@ -313,7 +308,11 @@ class UserData extends Component {
         <div className="middle-container">
           <div className="sign-in-details">
             <div className={classes.avatar}>
-              <img src={config.BASE_URL + "images/who_logo.png"} className="logo" alt="avatar" />
+              <img
+                src={config.BASE_URL + "images/who_logo.png"}
+                className="logo"
+                alt="avatar"
+              />
             </div>
             <h3 className="sign-in-header">Sign Up</h3>
             <form
@@ -414,11 +413,13 @@ class UserData extends Component {
                 {this.state.buttonTitle}
               </Button>
 
-              <div className="additional-options text-center" style={{"textAlign": "center"}}>
-                <Link className="link" to="/" style={{"display": "block"}}>
+              <div
+                className="additional-options text-center"
+                style={{ textAlign: "center" }}
+              >
+                <Link className="link" to="/" style={{ display: "block" }}>
                   <p>Login</p>
                 </Link>
-                
               </div>
 
               <div>
@@ -432,4 +433,4 @@ class UserData extends Component {
   }
 }
 
-export default withStyles(styles)(UserData);
+export default UserData;

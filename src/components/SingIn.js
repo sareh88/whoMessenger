@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { withStyles } from "material-ui/styles";
 import TextField from "material-ui/TextField";
 import Button from "material-ui/Button";
 import { Link } from "react-router-dom";
@@ -32,7 +31,7 @@ class SignIn extends Component {
       checked: false,
       email: "",
       password: "",
-      loginError:''
+      loginError: ""
     };
   }
 
@@ -86,11 +85,10 @@ class SignIn extends Component {
           this.props.history.push("/auth");
         })
         .catch(err => {
-          console.log(err)
+          console.log(err);
           this.setState({
-            loginError:err.message
-          })
-        
+            loginError: err.message
+          });
         });
     } else {
       console.log({ Error: "Fields are required" }); //Handle errors here...
@@ -112,7 +110,11 @@ class SignIn extends Component {
         <div className="middle-container">
           <div className="sign-in-details">
             <div className={classes.avatar}>
-              <img src={config.BASE_URL + "images/who_logo.png"} className="logo" alt="logo" />
+              <img
+                src={config.BASE_URL + "images/who_logo.png"}
+                className="logo"
+                alt="logo"
+              />
             </div>
             <form
               className={classes.formWrapper}
@@ -150,13 +152,15 @@ class SignIn extends Component {
                 <p>Forgot Password?</p>
               </Link>
             </div>
-            <span style={{color:'#e80909'}}>{this.state.loginError}</span>
+            <span style={{ color: "#e80909" }}>{this.state.loginError}</span>
           </div>
-         
         </div>
       </div>
     );
   }
 }
 
-export default withStyles(styles)(connect(null, { login })(SignIn));
+export default connect(
+  null,
+  { login }
+)(SignIn);

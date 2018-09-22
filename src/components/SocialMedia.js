@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { withStyles } from "material-ui/styles";
 import Tooltip from "material-ui/Tooltip";
 import classNames from "classnames";
 import Button from "material-ui/Button";
@@ -47,4 +46,4 @@ class SocialMedia extends Component {
   }
 }
 
-export default withStyles(styles)(SocialMedia);
+export default SocialMedia;

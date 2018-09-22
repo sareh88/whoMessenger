@@ -1,0 +1,19 @@
+#local
+node_modules
+coverage
+test/**/*.png
+files/*
+temp/*
+!files/empty
+!temp/empty
+
+#Logs
+npm-debug.log
+yarn-error.log
+
+#Build
+dist
+
+
+#Mac OS
+.DS_Store
