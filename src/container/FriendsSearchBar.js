@@ -57,7 +57,7 @@ class SearchBar extends Component {
   button = null;
 
   render() {
-    //const { classes } = this.props;
+    //const who = null;;
     const {
       open,
       anchorEl,

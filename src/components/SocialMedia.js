@@ -11,13 +11,13 @@ const styles = theme => ({
 
 class SocialMedia extends Component {
   render() {
-    const { classes } = this.props;
+    const who = null;
     return (
       <div className="social-media-login-main">
         <div className="social-media-login">
           <Tooltip id="tooltip-top" title="Facebook" placement="top">
             <Button
-              className={classNames(classes.social, classes.facebook)}
+              className={classNames(styles.social, styles.facebook)}
               raised
             >
               <i className="fa fa-facebook-square fa-2x" /> Sign in with
@@ -25,16 +25,13 @@ class SocialMedia extends Component {
             </Button>
           </Tooltip>
           <Tooltip id="tooltip-top" title="Google+" placement="top">
-            <Button
-              className={classNames(classes.social, classes.google)}
-              raised
-            >
+            <Button className={classNames(styles.social, styles.google)} raised>
               <i className="fa fa-google-plus fa-2x" /> Sign in with google
             </Button>
           </Tooltip>
           <Tooltip id="tooltip-top" title="Twitter" placement="top">
             <Button
-              className={classNames(classes.social, classes.twitter)}
+              className={classNames(styles.social, styles.twitter)}
               raised
             >
               <i className="fa fa-twitter fa-2x" /> Sign in with twitter

@@ -301,13 +301,13 @@ class UserData extends Component {
   }
 
   render() {
-    const { classes } = this.props;
+    const who = null;
 
     return (
       <div className="main-container">
         <div className="middle-container">
           <div className="sign-in-details">
-            <div className={classes.avatar}>
+            <div className={styles.avatar}>
               <img
                 src={config.BASE_URL + "images/who_logo.png"}
                 className="logo"
@@ -316,14 +316,14 @@ class UserData extends Component {
             </div>
             <h3 className="sign-in-header">Sign Up</h3>
             <form
-              className={classes.formWrapper}
+              className={styles.formWrapper}
               noValidate
               autoComplete="off"
               onSubmit={this.handleSubmit.bind(this)}
             >
               <TextField
                 id="firstName"
-                className={classes.textField}
+                className={styles.textField}
                 label={this.state.settingUserData.firstName}
                 onChange={this.handleInputChange}
                 name="firstName"
@@ -332,7 +332,7 @@ class UserData extends Component {
 
               <TextField
                 id="lastName"
-                className={classes.textField}
+                className={styles.textField}
                 label={this.state.settingUserData.lastName}
                 onChange={this.handleInputChange}
                 name="lastName"
@@ -341,7 +341,7 @@ class UserData extends Component {
 
               <TextField
                 id="email"
-                className={classes.textField}
+                className={styles.textField}
                 label={this.state.settingUserData.email}
                 onChange={this.handleInputChange}
                 name="email"
@@ -349,7 +349,7 @@ class UserData extends Component {
               />
               <TextField
                 id="password"
-                className={classes.textField}
+                className={styles.textField}
                 label={this.state.settingUserData.password}
                 onChange={this.handleInputChange}
                 name="password"
@@ -358,7 +358,7 @@ class UserData extends Component {
               />
               <TextField
                 id="newPassword"
-                className={classes.textField}
+                className={styles.textField}
                 label={this.state.settingUserData.newPassword}
                 onChange={this.handleInputChange}
                 name="newPassword"
@@ -370,7 +370,7 @@ class UserData extends Component {
                   type="caption"
                   align="left"
                   gutterBottom
-                  className={classes.Typography}
+                  className={styles.Typography}
                 >
                   Date of Birth
                 </Typography>
@@ -379,17 +379,17 @@ class UserData extends Component {
                   value={this.state.newUser.dateOfBirth}
                   labelFunc={date => moment(date).format("Do MMMM YYYY")}
                   onChange={this.handleDataChange}
-                  className={classes.DatePicker}
+                  className={styles.DatePicker}
                   helperText={this.state.errorMessagedateOfBirth}
                 />
               </div>
-              <FormControl component="fieldset" className={classes.FormControl}>
+              <FormControl component="fieldset" className={styles.FormControl}>
                 <FormLabel component="legend">Gender</FormLabel>
                 <RadioGroup
                   aria-label="gender"
                   value={this.state.newUser.gender}
                   onChange={this.handleChange}
-                  className={classes.RadioGroup}
+                  className={styles.RadioGroup}
                 >
                   <FormControlLabel
                     value="Male"
@@ -423,7 +423,7 @@ class UserData extends Component {
               </div>
 
               <div>
-                <p className={classes.text}>{this.state.generalerror}</p>
+                <p className={styles.text}>{this.state.generalerror}</p>
               </div>
             </form>
           </div>

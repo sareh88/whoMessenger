@@ -70,7 +70,7 @@ class SearchList extends Component {
     this.setState({ open: true });
   };
   render() {
-    const { classes } = this.props;
+    const who = null;
 
     let listItems = "";
     if (this.props.users !== "") {
@@ -98,7 +98,7 @@ class SearchList extends Component {
               primary={item.profile.firstName + " " + item.profile.lastName}
             />
             <Button
-              className={classes.button}
+              className={styles.button}
               variant="fab"
               color="primary"
               aria-label="Add"
@@ -115,7 +115,7 @@ class SearchList extends Component {
       });
     }
     return (
-      <div id="friend-list" className={classes.root}>
+      <div id="friend-list" className={styles.root}>
         <List>{listItems}</List>
       </div>
     );

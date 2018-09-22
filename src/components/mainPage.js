@@ -18,7 +18,7 @@ const styles = {
 
 class mainPage extends Component {
   render() {
-    const { classes } = this.props;
+    const who = null;;
     return (
       <div className="background">
         <div className="container">

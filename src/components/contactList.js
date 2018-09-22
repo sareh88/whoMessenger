@@ -95,7 +95,7 @@ class ContactList extends Component {
   }
 
   render() {
-    const { classes } = this.props;
+    const who = null;
 
     const listItems = this.props.friendsList.map((item, index) => {
       let avatarURL =
@@ -122,7 +122,7 @@ class ContactList extends Component {
     });
 
     return (
-      <div id="friend-list" className={classes.root}>
+      <div id="friend-list" className={styles.root}>
         <List>{listItems}</List>
       </div>
     );

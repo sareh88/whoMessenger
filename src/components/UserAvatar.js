@@ -57,14 +57,13 @@ class UserAvatar extends Component {
   };
 
   render() {
-    const { classes } = this.props;
     let avatarURL;
 
     if (this.state.redirect) {
       return <Redirect to="/" />;
     } else {
       return (
-        <div className={classes.root}>
+        <div className={styles.root}>
           <div className="icons" style={{ padding: 0, color: "#fff" }}>
             <IconButton onClick={this.handleClickOpen} style={{ zIndex: 1 }}>
               <i className="material-icons" style={{ color: "#fff" }}>
@@ -84,7 +83,7 @@ class UserAvatar extends Component {
             </IconButton>
           </div>
           <div
-            className={classes.avatar}
+            className={styles.avatar}
             style={{ padding: 10, marginTop: -60 }}
           >
             <Avatar size="100px" avatar={this.props.avatarURL} />

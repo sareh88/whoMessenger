@@ -21,21 +21,21 @@ const styles = {
 
 class FormDialog extends React.Component {
   render() {
-    const { classes } = this.props;
+    const who = null;
 
     return (
-      <div className={classes.comp}>
+      <div className={styles.comp}>
         <Dialog
           fullScreen={this.props.fullScreen}
           open={this.props.open}
           onClose={this.props.handleClose}
           aria-labelledby="form-dialog-title"
-          className={classes.background}
+          className={styles.background}
         >
           <DialogContent>{this.props.compo}</DialogContent>
           <DialogActions>
             <Button
-              className={classes.closeDialog}
+              className={styles.closeDialog}
               onClick={this.props.handleClose}
             >
               <i className="material-icons" id="close-cypress">

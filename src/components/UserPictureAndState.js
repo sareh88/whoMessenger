@@ -43,20 +43,20 @@ class UserPictureAndState extends Component {
   };
 
   render() {
-    const { classes } = this.props;
+    const who = null;
     return (
-      <div className={classes.row}>
+      <div className={styles.row}>
         <img
           src=" https://image.freepik.com/free-icon/small-camera_318-11159.jpg"
-          className={classes.img}
+          className={styles.img}
           alt={"profile"}
         />
         <label htmlFor="raised-button-file">
-          <Button raised component="span" className={classes.button}>
+          <Button raised component="span" className={styles.button}>
             <input type="file" />
           </Button>
         </label>
-        <FormControl fullWidth className={classes.formControl}>
+        <FormControl fullWidth className={styles.formControl}>
           <InputLabel htmlFor="status">Status Message:</InputLabel>
           <Input
             id="status"

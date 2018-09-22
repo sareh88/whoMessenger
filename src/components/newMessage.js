@@ -61,7 +61,7 @@ class NewMessage extends Component {
   }
 
   render() {
-    const { classes } = this.props;
+    const who = null;
 
     return (
       <div className="texting-area">
@@ -74,8 +74,8 @@ class NewMessage extends Component {
             placeholder="Type your message here"
             //onKeyUp={(e) => handleSubmit(e)}
             onKeyUp={e => this.handleEnterKey(e)}
-            classes={{
-              inkbar: classes.inputInkbar
+            styles={{
+              inkbar: styles.inputInkbar
             }}
             inputRef={thisInput => {
               this.txtMessage = thisInput;

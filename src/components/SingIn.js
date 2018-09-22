@@ -104,12 +104,11 @@ class SignIn extends Component {
   )*/
   }
   render() {
-    const { classes } = this.props;
     return (
       <div className="main-container">
         <div className="middle-container">
           <div className="sign-in-details">
-            <div className={classes.avatar}>
+            <div className={styles.avatar}>
               <img
                 src={config.BASE_URL + "images/who_logo.png"}
                 className="logo"
@@ -117,7 +116,7 @@ class SignIn extends Component {
               />
             </div>
             <form
-              className={classes.formWrapper}
+              className={styles.formWrapper}
               noValidate
               autoComplete="off"
               onSubmit={this.handleSubmit.bind(this)}

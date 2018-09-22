@@ -214,12 +214,12 @@ class UserPictureAndState extends Component {
   }
 
   render() {
-    const { classes } = this.props;
+    const who = null;
     if (this.state.redirect) {
       return <Redirect to="/" />;
     } else {
       return (
-        <Grid container spacing={24} className={classes.row}>
+        <Grid container spacing={24} className={styles.row}>
           <Grid item xs>
             <form
               noValidate
@@ -230,7 +230,7 @@ class UserPictureAndState extends Component {
             >
               <TextField
                 id="firstName"
-                className={classes.textField}
+                className={styles.textField}
                 label={this.state.userCurrentData.firstName}
                 onChange={this.handleInputChange}
                 name="firstName"
@@ -238,7 +238,7 @@ class UserPictureAndState extends Component {
 
               <TextField
                 id="lastName"
-                className={classes.textField}
+                className={styles.textField}
                 label={this.state.userCurrentData.lastName}
                 onChange={this.handleInputChange}
                 name="lastName"
@@ -247,13 +247,13 @@ class UserPictureAndState extends Component {
 
               <TextField
                 id="emailAddress"
-                className={classes.emailAddress}
+                className={styles.emailAddress}
                 label={this.state.userCurrentData.emailAddress}
                 onChange={this.handleInputChange}
                 name="emailAddress"
               />
 
-              <div className={classes.pickerContainer}>
+              <div className={styles.pickerContainer}>
                 <Typography type="caption" align="left" gutterBottom>
                   Date of Birth
                 </Typography>
@@ -262,7 +262,7 @@ class UserPictureAndState extends Component {
                   value={this.state.userCurrentData.dateOfBirth}
                   labelFunc={date => moment(date).format("Do MMMM YYYY")}
                   onChange={this.handleDataChange}
-                  className={classes.datePicker}
+                  className={styles.datePicker}
                 />
               </div>
 
