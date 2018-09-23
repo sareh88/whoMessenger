@@ -6,7 +6,7 @@ import { FormControl } from 'material-ui/Form';
 import Popover from 'material-ui/Popover';
 import Input, { InputLabel } from 'material-ui/Input';
 import { findDOMNode } from 'react-dom';
-import { setFilter } from '../../actions/filterAction';
+import { setFilter } from '../Store/actions/filterAction';
 import { connect } from 'react-redux';
 import FormDialog from '../Modal/dialog';
 import AddContact from './Addcontact';

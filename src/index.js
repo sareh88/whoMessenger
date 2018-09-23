@@ -1,12 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import App from './components/Master/App';
 import registerServiceWorker from './registerServiceWorker';
 import { Provider } from 'react-redux';
-// import {createStore} from 'redux';
-// import reducer from './reducers';
 import ProfileSettings from './components/SettingPage/ProfileSettings';
-import store from '../src/components/Store/store';
+import store from './components/Store/store';
 import { ConnectedRouter } from 'react-router-redux';
 import SingIn from './components/Login/SingIn';
 import { Route } from 'react-router';

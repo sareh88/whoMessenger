@@ -1,21 +1,21 @@
 import React, { Component } from 'react';
-import UserAvatar from './components/SideView/UserAvatar';
-import ContactList from './components/SideView/contactList';
-import ContactDetail from './components/SideView/contactDetail';
-import MessagesLog from './components/ChatApp/messagesLog';
-import NewMessage from './components/ChatApp/newMessage';
-import { fetchContactList } from '../src/components/Store/actions/userActions';
+import UserAvatar from '../SideView/UserAvatar';
+import ContactList from '../SideView/contactList';
+import ContactDetail from '../SideView/contactDetail';
+import MessagesLog from '../ChatApp/messagesLog';
+import NewMessage from '../ChatApp/newMessage';
+import { fetchContactList } from '../Store/actions/userActions';
 import io from 'socket.io-client';
 import moment from 'moment';
 import { connect } from 'react-redux';
-import SearchBar from './components/SideView/FriendsSearchBar'; // FIXME: Incompatible with Material UI 1.0 Beta. Use react-autosuggest instead.
+import SearchBar from '../SideView/FriendsSearchBar'; // FIXME: Incompatible with Material UI 1.0 Beta. Use react-autosuggest instead.
 import './App.css';
-import './style.css';
+import '../../style.css';
 import Grid from 'material-ui/Grid';
 import Paper from 'material-ui/Paper';
 import decode from 'jwt-decode';
-import config from './config/config';
-import store from '../src/components/Store/store';
+import config from '../../config/config';
+import store from '../Store/store';
 
 function mapStateToProps(state, filter) {
   return {

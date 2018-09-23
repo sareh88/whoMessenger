@@ -3,7 +3,7 @@ import TextField from 'material-ui/TextField';
 import Button from 'material-ui/Button';
 import { Link } from 'react-router-dom';
 import decode from 'jwt-decode';
-import { login } from '../../actions/login';
+import { login } from '../Store/actions/login';
 import { connect } from 'react-redux';
 import config from '../../config/config';
 
