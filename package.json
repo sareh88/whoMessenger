@@ -48,6 +48,14 @@
     "passport-google-oauth20": "^1.0.0",
     "passport-local": "^1.0.0",
     "passport-twitter": "^1.0.4",
+    "eslint": "4.19.1",
+    "eslint-config-airbnb": "16.1.0",
+    "eslint-plugin-import": "2.12.0",
+    "eslint-plugin-jsx-a11y": "6.0.3",
+    "eslint-plugin-promise": "3.8.0",
+    "eslint-plugin-react": "7.8.2",
+    "eslint-plugin-react-native": "3.2.1",
+    "extract-text-webpack-plugin": "3.0.2",
     "qs": "^6.5.1",
     "react": "^16.2.0",
     "react-avatar-image-cropper": "^1.1.6",
@@ -67,9 +75,7 @@
     "redux-thunk": "^2.2.0",
     "socket.io": "^2.0.4",
     "socket.io-client": "*",
-    "uuid": "^3.1.0"
-  },
-  "devDependencies": {
+    "uuid": "^3.1.0",
     "concurrently": "^3.5.1",
     "faker": "^4.1.0",
     "nodemon": "^1.14.8"
