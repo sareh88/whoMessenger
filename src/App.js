@@ -4,7 +4,7 @@ import ContactList from './components/SideView/contactList';
 import ContactDetail from './components/SideView/contactDetail';
 import MessagesLog from './components/ChatApp/messagesLog';
 import NewMessage from './components/ChatApp/newMessage';
-import { fetchContactList } from './actions/userActions';
+import { fetchContactList } from '../src/components/Store/actions/userActions';
 import io from 'socket.io-client';
 import moment from 'moment';
 import { connect } from 'react-redux';
@@ -15,7 +15,7 @@ import Grid from 'material-ui/Grid';
 import Paper from 'material-ui/Paper';
 import decode from 'jwt-decode';
 import config from './config/config';
-import store from './store';
+import store from '../src/components/Store/store';
 
 function mapStateToProps(state, filter) {
   return {

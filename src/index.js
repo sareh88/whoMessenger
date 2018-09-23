@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 // import {createStore} from 'redux';
 // import reducer from './reducers';
 import ProfileSettings from './components/SettingPage/ProfileSettings';
-import store from './store';
+import store from '../src/components/Store/store';
 import { ConnectedRouter } from 'react-router-redux';
 import SingIn from './components/Login/SingIn';
 import { Route } from 'react-router';
@@ -14,7 +14,7 @@ import createHistory from 'history/createBrowserHistory';
 import '../node_modules/font-awesome/css/font-awesome.min.css';
 import SingUp from './components/Login/SingUp';
 import Favicon from 'react-favicon';
-import config from './config/config.js';
+import config from './config/config';
 
 const history = createHistory();
 
