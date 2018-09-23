@@ -3,7 +3,7 @@ import List, { ListItem, ListItemText } from 'material-ui/List';
 import SkypeAvatar from './skypeAvatar';
 import decode from 'jwt-decode';
 import config from '../../config/config';
-import { setCurrentFriend } from '../../actions/setCurrentFriendAction';
+import { setCurrentFriend } from '../Store/actions/setCurrentFriendAction';
 import { connect } from 'react-redux';
 
 const styles = theme => ({
