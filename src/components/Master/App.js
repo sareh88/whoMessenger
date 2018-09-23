@@ -16,6 +16,7 @@ import Paper from 'material-ui/Paper';
 import decode from 'jwt-decode';
 import config from '../../config/config';
 import store from '../Store/store';
+import SideView from '../SideView/contaoner/SideView';
 
 function mapStateToProps(state, filter) {
   return {
@@ -193,22 +194,24 @@ class App extends Component {
           ? `${config.BASE_URL}images/avatars/${currentAvatar}`
           : `${config.BASE_URL}images/avatar_placeholder.png`;
     }
+
     return (
       <Grid alignItems={alignItems} container direction={direction} item justify={justify} lg={12} sm={12}>
         <Grid className="app" item lg={3} sm={4} xs={12}>
-          <Grid>
-            <Paper>
-              <Grid className="sideBarAvatarComponent" item sm={12}>
-                <UserAvatar avatarURL={avatarURL} />
+          <SideView
+            avatarURL={avatarURL}
+            friendsList={this.props.contactList}
+            userId={this.getSocketChanelId.bind(this)}
+          />
+          {/* { <Grid className="sideBarAvatarComponent" item sm={12}>
+                <UserAvatar  />
               </Grid>
               <Grid className="sideBarContactListComponent" item sm={12}>
-                <ContactList friendsList={this.props.contactList} getId={this.getSocketChanelId.bind(this)} />
+                <ContactList   />
               </Grid>
               <Grid item sm={12}>
                 <SearchBar friendsList={this.props.contactList} />
-              </Grid>
-            </Paper>
-          </Grid>
+    </Grid>} */}
         </Grid>
         <Grid className="app" item lg={9} sm={8} xs={12}>
           <Grid className="messagesContactDetailComponent" item sm={12}>

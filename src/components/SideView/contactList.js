@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
-import List, { ListItem, ListItemText } from 'material-ui/List';
+// import List, { ListItem, ListItemText } from 'material-ui/List';
+import { Row, Col, List, message, Avatar, Spin } from 'antd';
+import InfiniteScroll from 'react-infinite-scroller';
 import SkypeAvatar from './skypeAvatar';
 import decode from 'jwt-decode';
 import config from '../../config/config';
 import { setCurrentFriend } from '../Store/actions/setCurrentFriendAction';
 import { connect } from 'react-redux';
+
+import './stylesheets/ContactList.css';
 
 const styles = theme => ({
   root: {
@@ -89,35 +93,44 @@ class ContactList extends Component {
   }
 
   render() {
-    const who = null;
+    // const listItems = this.props.friendsList.map((item, index) => {
+    //   const avatarURL =
+    //     item.avatarURL !== ''
+    //       ? `${config.BASE_URL}images/avatars/${item.avatarURL}`
+    //       : `${config.BASE_URL}images/avatar_placeholder.png`;
 
-    const listItems = this.props.friendsList.map((item, index) => {
-      const avatarURL =
-        item.avatarURL !== ''
-          ? `${config.BASE_URL}images/avatars/${item.avatarURL}`
-          : `${config.BASE_URL}images/avatar_placeholder.png`;
+    //   const highlightedFriend = index === this.state.selectedIndex ? '#01062e' : '';
 
-      const highlightedFriend = index === this.state.selectedIndex ? '#01062e' : '';
-
-      return (
-        <ListItem
-          key={item.userId}
-          button
-          className="list-item"
-          dense
-          onClick={event => this.socketChanel(item, event, index)}
-          style={{ backgroundColor: highlightedFriend }}
-        >
-          <SkypeAvatar avatar={avatarURL} size={45} />
-          <ListItemText primary={item.fullName} />
-        </ListItem>
-      );
-    });
-
+    //   return (
+    //     <ListItem
+    //       key={item.userId}
+    //       button
+    //       className="list-item"
+    //       dense
+    //       onClick={event => this.socketChanel(item, event, index)}
+    //       style={{ backgroundColor: highlightedFriend }}
+    //     >
+    //       <SkypeAvatar avatarURL={avatarURL} />
+    //       <ListItemText primary={item.fullName} />
+    //     </ListItem>
+    //   );
+    // });
     return (
-      <div className={styles.root} id="friend-list">
-        <List>{listItems}</List>
-      </div>
+      <Row className="demo-infinite-container">
+        <Col span={24}>
+          <List
+            dataSource={this.props.friendsList}
+            renderItem={item => (
+              <List.Item key={item.userId}>
+                <List.Item.Meta
+                  avatar={<Avatar src={`${config.BASE_URL}images/avatars/${item.avatarURL}`} />}
+                  title={item.fullName}
+                />
+              </List.Item>
+            )}
+          />
+        </Col>
+      </Row>
     );
   }
 }

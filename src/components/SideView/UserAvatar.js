@@ -1,27 +1,11 @@
 import React, { Component } from 'react';
+import { Col, Row } from 'antd';
 import IconButton from 'material-ui/IconButton';
 import Avatar from './skypeAvatar';
 import ProfileSettings from '../SettingPage/ProfileSettings';
 import FormDialog from '../Modal/dialog';
 import config from '../../config/config';
 import { Redirect } from 'react-router';
-
-const styles = {
-  root: {
-    flexGrow: 1,
-  },
-  row: {
-    display: 'flex',
-    justifyContent: 'center',
-  },
-  avatar: {
-    position: 'relative',
-    padding: '1rem',
-  },
-  img: {
-    width: '100%',
-  },
-};
 
 class UserAvatar extends Component {
   state = {
@@ -63,25 +47,26 @@ class UserAvatar extends Component {
       return <Redirect to="/" />;
     }
     return (
-      <div className={styles.root}>
-        <div className="icons" style={{ padding: 0, color: '#fff' }}>
+      <Row align="middle" justify="space-between" style={{ border: '1px solid red' }} type="flex">
+        <Col span={5} style={{ padding: 0, color: '#fff' }}>
           <IconButton onClick={this.handleClickOpen} style={{ zIndex: 1 }}>
             <i className="material-icons" style={{ color: '#fff' }}>
               settings
             </i>
           </IconButton>
           <FormDialog compo={<ProfileSettings />} handleClose={this.handleClose} open={this.state.open} />
-
-          <IconButton onClick={this.logOut} style={{ zIndex: 1 }}>
+        </Col>
+        <Col span={8}>
+          <Avatar avatarUrl={this.props.avatarURL} />
+        </Col>
+        <Col span={5} style={{ padding: 0, color: '#fff', border: '1px solid orange' }}>
+          <IconButton onClick={this.logOut}>
             <i className="material-icons" style={{ color: '#fff' }}>
               exit_to_app
             </i>
           </IconButton>
-        </div>
-        <div className={styles.avatar} style={{ padding: 10, marginTop: -60 }}>
-          <Avatar avatar={this.props.avatarURL} size="100px" />
-        </div>
-      </div>
+        </Col>
+      </Row>
     );
   }
 }
