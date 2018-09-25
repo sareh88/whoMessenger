@@ -1,40 +1,38 @@
 import React, { Component } from 'react';
-import decode from "jwt-decode";
-
-
+import { Row, Col } from 'antd';
+import decode from 'jwt-decode';
 
 class ContactDetail extends Component {
+  state = {
+    test: null,
+  };
   render() {
-    const {message} = this.props
+    const { message } = this.props;
     let align;
-    //let time = this.props.time;
+    // let time = this.props.time;
 
-    let user = decode(localStorage.getItem("token"));
+    const user = decode(localStorage.getItem('token'));
 
-    console.log("message from ballon:", message)
-    if(message.userID === user._id) {
-      align = "bubble me"
+    console.log('message from ballon:', message);
+    if (message.userID === user._id) {
+      align = 'bubble me';
     } else {
-      align = "bubble you"
+      align = 'bubble you';
     }
-   
-    return (
-              <div className="chat">
-                <div className={align}>
-                  {message.messageBody}
-                  
 
-                  {/*
+    return (
+      <Row className="chat">
+        <Col className={align} span={24}>
+          {message.messageBody}
+
+          {/*
                      <span className="timer">
                     {time}
                   </span> */}
-                </div>
-              
-                
-            </div>
-      );
+        </Col>
+      </Row>
+    );
   }
 }
 
-
-export default  ContactDetail;
+export default ContactDetail;
