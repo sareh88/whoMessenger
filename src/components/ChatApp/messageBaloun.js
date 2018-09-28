@@ -2,10 +2,13 @@ import React, { Component } from 'react';
 import { Row, Col } from 'antd';
 import decode from 'jwt-decode';
 
+import './stylesheets/MessageBaloun.scss';
+
 class ContactDetail extends Component {
   state = {
     test: null,
   };
+
   render() {
     const { message } = this.props;
     let align;

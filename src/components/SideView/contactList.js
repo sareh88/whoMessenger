@@ -2,19 +2,13 @@ import React, { Component } from 'react';
 // import List, { ListItem, ListItemText } from 'material-ui/List';
 import { Row, Col, List, message, Avatar, Spin } from 'antd';
 import InfiniteScroll from 'react-infinite-scroller';
-import SkypeAvatar from './skypeAvatar';
 import decode from 'jwt-decode';
-import config from '../../config/config';
-import { setCurrentFriend } from '../Store/actions/setCurrentFriendAction';
 import { connect } from 'react-redux';
 
-import './stylesheets/ContactList.css';
+import config from '../../config/config';
+import { setCurrentFriend } from '../Store/actions/setCurrentFriendAction';
 
-const styles = theme => ({
-  root: {
-    width: '100%',
-  },
-});
+import './stylesheets/ContactList.scss';
 
 class ContactList extends Component {
   constructor() {

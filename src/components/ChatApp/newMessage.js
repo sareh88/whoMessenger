@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import { Row, Col, Input, Select, Icon } from 'antd';
 import IconButton from 'material-ui/IconButton';
-import Input, { InputAdornment } from 'material-ui/Input';
-import InsertEmoticon from 'material-ui-icons/InsertEmoticon';
-import { FormControl } from 'material-ui/Form';
+// import Input, { InputAdornment } from 'material-ui/Input';
+// import InsertEmoticon from 'material-ui-icons/InsertEmoticon';
+// import { FormControl } from 'material-ui/Form';
 import Emoji from './emoji';
 
 const styles = theme => ({
@@ -64,8 +65,27 @@ class NewMessage extends Component {
     const who = null;
 
     return (
-      <div className="texting-area">
-        <FormControl className="form-control">
+      <Row className="texting-area" style={{ width: '500px' }}>
+        <Col span={24}>
+          <Input
+            addonAfter={<Icon type="smile" onClick={this.emojiHandle} style={{ color: 'orange' }} />}
+            style={{ width: '500px' }}
+          >
+            {this.state.emojiClicked ? (
+              <div
+                id="emoji1"
+                style={{
+                  position: 'absolute',
+                  bottom: '30px',
+                  right: '30px',
+                }}
+              >
+                <Emoji txtMessage={this.txtMessage} />
+              </div>
+            ) : null}
+          </Input>
+        </Col>
+        {/* <FormControl className="form-control">
           <Input
             endAdornment={(
               <InputAdornment position="end">
@@ -100,8 +120,8 @@ class NewMessage extends Component {
               inkbar: styles.inputInkbar,
             }}
           />
-        </FormControl>
-      </div>
+          </FormControl> */}
+      </Row>
     );
   }
 }

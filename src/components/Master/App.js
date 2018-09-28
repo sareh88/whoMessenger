@@ -1,27 +1,32 @@
 import React, { Component } from 'react';
-import UserAvatar from '../SideView/UserAvatar';
-import ContactList from '../SideView/contactList';
+import io from 'socket.io-client';
+import moment from 'moment';
+import decode from 'jwt-decode';
+import { connect } from 'react-redux';
+import { Layout, Col, Row } from 'antd';
+import store from '../Store/store';
+import config from '../../config/config';
 import ContactDetail from '../SideView/contactDetail';
 import MessagesLog from '../ChatApp/messagesLog';
 import NewMessage from '../ChatApp/newMessage';
 import { fetchContactList } from '../Store/actions/userActions';
-import io from 'socket.io-client';
-import moment from 'moment';
-import { connect } from 'react-redux';
-import SearchBar from '../SideView/FriendsSearchBar'; // FIXME: Incompatible with Material UI 1.0 Beta. Use react-autosuggest instead.
-import './App.css';
-import '../../style.css';
-import Grid from 'material-ui/Grid';
-import Paper from 'material-ui/Paper';
-import decode from 'jwt-decode';
-import config from '../../config/config';
-import store from '../Store/store';
+
+// import '../../style.css';
+
+// import Grid from 'material-ui/Grid';
+// import Paper from 'material-ui/Paper';
+
 import SideView from '../SideView/contaoner/SideView';
+import 'antd/dist/antd.css';
+import './stylesheets/App.scss';
+
+const { Header, Footer, Sider, Content } = Layout;
 
 function mapStateToProps(state, filter) {
   return {
     // currentUserData:state.changeSettingReducer.currentUserData,
-    contactList: state.contactListReducers.contactList.filter(c => c.fullName.toLowerCase().indexOf(state.contactListFilterReducer.toLowerCase()) > -1
+    contactList: state.contactListReducers.contactList.filter(
+      c => c.fullName.toLowerCase().indexOf(state.contactListFilterReducer.toLowerCase()) > -1
 
       // return c.name.toLowerCase().indexOf(state.contactListFilterReducer.toLowerCase()) > -1
     ),
@@ -189,42 +194,41 @@ class App extends Component {
 
       avatarURL = `${config.BASE_URL}images/avatars/${newAvatar}`;
     } else {
-      avatarURL =
-        currentAvatar !== ''
-          ? `${config.BASE_URL}images/avatars/${currentAvatar}`
-          : `${config.BASE_URL}images/avatar_placeholder.png`;
+      avatarURL = currentAvatar !== ''
+        ? `${config.BASE_URL}images/avatars/${currentAvatar}`
+        : `${config.BASE_URL}images/avatar_placeholder.png`;
     }
 
     return (
-      <Grid alignItems={alignItems} container direction={direction} item justify={justify} lg={12} sm={12}>
-        <Grid className="app" item lg={3} sm={4} xs={12}>
-          <SideView
-            avatarURL={avatarURL}
-            friendsList={this.props.contactList}
-            userId={this.getSocketChanelId.bind(this)}
-          />
-          {/* { <Grid className="sideBarAvatarComponent" item sm={12}>
-                <UserAvatar  />
-              </Grid>
-              <Grid className="sideBarContactListComponent" item sm={12}>
-                <ContactList   />
-              </Grid>
-              <Grid item sm={12}>
-                <SearchBar friendsList={this.props.contactList} />
-    </Grid>} */}
-        </Grid>
-        <Grid className="app" item lg={9} sm={8} xs={12}>
-          <Grid className="messagesContactDetailComponent" item sm={12}>
-            <ContactDetail />
-          </Grid>
-          <Grid className="messagesLogComponent" item sm={12}>
-            <MessagesLog messages={this.state.messages} socketId={this.state.socketId} />
-          </Grid>
-          <Grid className="messagesNewMessageComponent" item sm={12}>
-            <NewMessage handleSubmit={this.handleSubmit} />
-          </Grid>
-        </Grid>
-      </Grid>
+      <Row>
+        <Col span={24}>
+          <Layout className="layout-container">
+            <Sider theme="dark" width={350}>
+              <SideView
+                avatarURL={avatarURL}
+                friendsList={this.props.contactList}
+                userId={this.getSocketChanelId.bind(this)}
+                user={user}
+              />
+            </Sider>
+            <Layout>
+              <Header>
+                <ContactDetail />
+              </Header>
+              <Content>
+                <MessagesLog
+                  messages={this.state.messages}
+                  setCurrentFriend={avatarURL}
+                  socketId={this.state.socketId}
+                />
+              </Content>
+              <Footer>
+                <NewMessage handleSubmit={this.handleSubmit} />
+              </Footer>
+            </Layout>
+          </Layout>
+        </Col>
+      </Row>
     );
   }
 }

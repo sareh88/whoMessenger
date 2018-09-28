@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import List, { ListItem, ListItemText } from 'material-ui/List';
-import Avatar from './skypeAvatar';
 // import IconButton from "material-ui/IconButton";
 import uuidv1 from 'uuid/v1';
 // import FriendConfirmation from "./addFriendConfirmation";
-import config from '../../config/config';
 import AddIcon from 'material-ui-icons/Add';
 // import Icon from 'material-ui/Icon';
 import Button from 'material-ui/Button';
+import config from '../../config/config';
+import Avatar from './UserAvater';
 
 const styles = theme => ({
   root: {
-    width: '100%',
+    // width: '100%',
     backgroundColor: '#fff',
   },
   button: {
@@ -62,10 +62,12 @@ class SearchList extends Component {
       console.log({ Error: 'Fields are required' }); // Handle errors here...
     }
   }
+
   handleClickOpen = () => {
     console.log(this.state);
     this.setState({ open: true });
   };
+
   render() {
     const who = null;
 

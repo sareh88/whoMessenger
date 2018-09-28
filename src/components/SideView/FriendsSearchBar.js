@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import IconButton from 'material-ui/IconButton';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
@@ -7,7 +8,6 @@ import Popover from 'material-ui/Popover';
 import Input, { InputLabel } from 'material-ui/Input';
 import { findDOMNode } from 'react-dom';
 import { setFilter } from '../Store/actions/filterAction';
-import { connect } from 'react-redux';
 import FormDialog from '../Modal/dialog';
 import AddContact from './Addcontact';
 
@@ -32,6 +32,7 @@ class SearchBar extends Component {
   handleClickOpen = () => {
     this.setState({ contactAddOpen: true });
   };
+
   handleClickClose = () => {
     this.setState({
       contactAddOpen: false,
@@ -50,10 +51,12 @@ class SearchBar extends Component {
       open: false,
     });
   };
+
   searchFriends(e) {
     this.props.onFilter(e.target.value);
     this.setState({ searchKeyword: e.target.value });
   }
+
   button = null;
 
   render() {

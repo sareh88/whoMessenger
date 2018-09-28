@@ -1,0 +1,13 @@
+.demo-infinite-container {
+  overflow: auto;
+  padding: 8px 24px;
+  height: auto;
+  color: white;
+  background: linear-gradient(#01062e, #243084);
+  .ant-list-split .ant-list-item {
+    border-bottom: none;
+  }
+  .ant-list-item-meta-title {
+    color: #fff;
+  }
+}

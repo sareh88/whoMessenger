@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
-import { Col, Row } from 'antd';
-import IconButton from 'material-ui/IconButton';
-import Avatar from './skypeAvatar';
+import { Redirect } from 'react-router';
+import { Col, Row, Icon } from 'antd';
+
+import UserAvater from './UserAvater';
 import ProfileSettings from '../SettingPage/ProfileSettings';
 import FormDialog from '../Modal/dialog';
 import config from '../../config/config';
-import { Redirect } from 'react-router';
 
-class UserAvatar extends Component {
+import './stylesheets/SideViewHeader.scss';
+
+class SideViewHeader extends Component {
   state = {
     open: false,
     redirect: false,
@@ -41,34 +43,34 @@ class UserAvatar extends Component {
   };
 
   render() {
-    let avatarURL;
+    const { user } = this.props;
 
+    const { profile } = user;
+    console.log(profile);
     if (this.state.redirect) {
       return <Redirect to="/" />;
     }
     return (
-      <Row align="middle" justify="space-between" style={{ border: '1px solid red' }} type="flex">
-        <Col span={5} style={{ padding: 0, color: '#fff' }}>
-          <IconButton onClick={this.handleClickOpen} style={{ zIndex: 1 }}>
-            <i className="material-icons" style={{ color: '#fff' }}>
-              settings
-            </i>
-          </IconButton>
+      <Row align="middle" className="header-wrapper" justify="space-around" type="flex">
+        <Col span={5}>
+          <Icon
+            onClick={this.handleClickOpen}
+            theme="outlined"
+            type="setting"
+            spin
+            style={{ color: '#fff', fontSize: '18px' }}
+          />
           <FormDialog compo={<ProfileSettings />} handleClose={this.handleClose} open={this.state.open} />
         </Col>
-        <Col span={8}>
-          <Avatar avatarUrl={this.props.avatarURL} />
+        <Col span={10} >
+          <UserAvater userProfile={profile} />
         </Col>
-        <Col span={5} style={{ padding: 0, color: '#fff', border: '1px solid orange' }}>
-          <IconButton onClick={this.logOut}>
-            <i className="material-icons" style={{ color: '#fff' }}>
-              exit_to_app
-            </i>
-          </IconButton>
+        <Col span={5}>
+          <Icon onClick={this.logOut} theme="outlined" type="logout" spin style={{ color: '#fff', fontSize: '18px' }} />
         </Col>
       </Row>
     );
   }
 }
 
-export default UserAvatar;
+export default SideViewHeader;

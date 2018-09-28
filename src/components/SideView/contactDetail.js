@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Button from 'material-ui/Button';
-import Avatar from './skypeAvatar';
+import Avatar from './UserAvater';
 import FormDialog from '../Modal/dialog';
 import config from '../../config/config';
 import { connect } from 'react-redux';

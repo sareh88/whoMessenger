@@ -1,0 +1,10 @@
+.layout-container {
+  height: calc(110vh - 80px);
+  width: 100%;
+}
+.sider {
+  width: 30%;
+  flex: 0 0 30%;
+  max-width: 30%;
+  min-width: 200px;
+}

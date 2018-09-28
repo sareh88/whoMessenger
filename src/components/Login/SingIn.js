@@ -3,26 +3,11 @@ import TextField from 'material-ui/TextField';
 import Button from 'material-ui/Button';
 import { Link } from 'react-router-dom';
 import decode from 'jwt-decode';
-import { login } from '../Store/actions/login';
 import { connect } from 'react-redux';
+import { login } from '../Store/actions/login';
 import config from '../../config/config';
 
-const styles = theme => ({
-  formWrapper: {
-    display: 'flex',
-    flexDirection: 'column',
-    position: 'relative',
-    top: '2rem',
-  },
-  registerNow: {
-    textDecoration: 'none',
-    color: '#FF6A6F',
-  },
-  forgotPassword: {
-    textDecoration: 'none',
-    color: '#777777',
-  },
-});
+import './stylesheets/SignIn.scss';
 
 class SignIn extends Component {
   constructor() {
@@ -78,7 +63,7 @@ class SignIn extends Component {
           const user = decode(data.token);
           console.log(user);
           localStorage.setItem('token', data.token);
-          this.props.history.push('/auth');
+          this.props.history.push('/main');
         })
         .catch((err) => {
           console.log(err);
@@ -99,15 +84,16 @@ class SignIn extends Component {
     (res) => this.context.router.push('/auth'),
   ) */
   }
+
   render() {
     return (
       <div className="main-container">
         <div className="middle-container">
           <div className="sign-in-details">
-            <div className={styles.avatar}>
+            <div>
               <img alt="logo" className="logo" src={`${config.BASE_URL}images/who_logo.png`} />
             </div>
-            <form autoComplete="off" className={styles.formWrapper} noValidate onSubmit={this.handleSubmit.bind(this)}>
+            <form autoComplete="off" className="form-wrapper" noValidate onSubmit={this.handleSubmit.bind(this)}>
               <TextField id="email" label="Email" onChange={this.handleEmailChange} placeholder="Email" />
               <TextField
                 id="password"

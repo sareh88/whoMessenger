@@ -1,32 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/Master/App';
-import registerServiceWorker from './registerServiceWorker';
 import { Provider } from 'react-redux';
-import ProfileSettings from './components/SettingPage/ProfileSettings';
-import store from './components/Store/store';
-import { ConnectedRouter } from 'react-router-redux';
-import SingIn from './components/Login/SingIn';
-import { Route } from 'react-router';
+import { Router, Route } from 'react-router-dom';
 import createHistory from 'history/createBrowserHistory';
-import '../node_modules/font-awesome/css/font-awesome.min.css';
-import SingUp from './components/Login/SingUp';
-import Favicon from 'react-favicon';
-import config from './config/config';
+import registerServiceWorker from './registerServiceWorker';
+import store from './components/Store/store';
+// import '../node_modules/font-awesome/css/font-awesome.min.css';
+
+import Master from './components/Master/Master';
 
 const history = createHistory();
 
 ReactDOM.render(
   <Provider store={store}>
-    <ConnectedRouter history={history}>
-      <div>
-        <Favicon url={`${config.BASE_URL}images/favicon/favicon.ico`} />
-        <Route component={SingIn} exact path="/" />
-        <Route component={App} exact path="/auth" />
-        <Route component={ProfileSettings} exact path="/auth/profile" />
-        <Route component={SingUp} exact history={history} path="/singup" />
-      </div>
-    </ConnectedRouter>
+    <Router history={history}>
+      <Route component={Master} path="/" />
+    </Router>
   </Provider>,
   document.getElementById('root')
 );
