@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import IconButton from 'material-ui/IconButton';
-import AppBar from 'material-ui/AppBar';
-import Toolbar from 'material-ui/Toolbar';
-import { FormControl } from 'material-ui/Form';
-import Popover from 'material-ui/Popover';
-import Input, { InputLabel } from 'material-ui/Input';
+import { Row, Col, Input, Icon } from 'antd';
 import { findDOMNode } from 'react-dom';
 import { setFilter } from '../Store/actions/filterAction';
 import FormDialog from '../Modal/dialog';
 import AddContact from './Addcontact';
+
+import './stylesheets/SearchBar.scss';
 
 const mapDispatchToProps = dispatch => ({
   onFilter: filter => dispatch(setFilter(filter)),
@@ -53,14 +50,12 @@ class SearchBar extends Component {
   };
 
   searchFriends(e) {
-    this.props.onFilter(e.target.value);
-    this.setState({ searchKeyword: e.target.value });
+    this.props.onFilter(e);
+    // this.setState({ searchKeyword: e.target.value });
   }
 
-  button = null;
-
   render() {
-    // const who = null;;
+    const Search = Input.Search;
     const {
       open,
       anchorEl,
@@ -73,7 +68,15 @@ class SearchBar extends Component {
       anchorReference,
     } = this.state;
     return (
-      <div>
+      <Row className="search-bar-container">
+        <Col push={1} span={16}>
+          <Search onSearch={e => this.searchFriends(e)} style={{ width: 200 }} />
+        </Col>
+        <Col className="add-contact-icon" push={4} span={4}>
+          <Icon style={{ color: '#fff', fontSize: '20px', marginLeft: '10px' }} theme="outlined" type="user-add" />
+        </Col>
+      </Row>
+      /* <div>
         <AppBar
           style={{
             position: 'relative',
@@ -141,7 +144,7 @@ class SearchBar extends Component {
             />
           </Toolbar>
         </AppBar>
-      </div>
+      </div> */
     );
   }
 }

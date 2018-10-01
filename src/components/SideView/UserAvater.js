@@ -3,6 +3,8 @@ import { Avatar } from 'antd';
 import { Row, Col } from 'antd';
 import config from '../../config/config';
 
+import './stylesheets/UserAvatar.scss';
+
 class UserAvater extends React.Component {
   state = {
     test: null,
@@ -14,12 +16,12 @@ class UserAvater extends React.Component {
     const url = `${config.BASE_URL}images/avatars/${userProfile.avatarURL}`;
     const { firstName, lastName } = userProfile;
     return (
-      <Row style={{ border: '1px solid orange' }}>
-        <Col span={24}>
+      <Row align="middle" className="user-avatar" justify="center" type="flex">
+        <Col span={10}>
           <Avatar alt={firstName} className="avatar" icon="user" size="large" src={url} />
         </Col>
-        <Col span={24}>
-          <h5 style={{ color: '#fff' }}>{`${firstName}${lastName}`}</h5>
+        <Col span={15}>
+          <h5>{`${firstName}${lastName}`}</h5>
         </Col>
       </Row>
     );

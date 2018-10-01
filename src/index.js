@@ -6,8 +6,9 @@ import createHistory from 'history/createBrowserHistory';
 import registerServiceWorker from './registerServiceWorker';
 import store from './components/Store/store';
 // import '../node_modules/font-awesome/css/font-awesome.min.css';
-
 import Master from './components/Master/Master';
+
+import './style.css';
 
 const history = createHistory();
 

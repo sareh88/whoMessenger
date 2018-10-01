@@ -58,15 +58,15 @@ class SideViewHeader extends Component {
             theme="outlined"
             type="setting"
             spin
-            style={{ color: '#fff', fontSize: '18px' }}
+            style={{ color: '#fff', fontSize: '20px' }}
           />
           <FormDialog compo={<ProfileSettings />} handleClose={this.handleClose} open={this.state.open} />
         </Col>
-        <Col span={10} >
+        <Col span={14}>
           <UserAvater userProfile={profile} />
         </Col>
         <Col span={5}>
-          <Icon onClick={this.logOut} theme="outlined" type="logout" spin style={{ color: '#fff', fontSize: '18px' }} />
+          <Icon onClick={this.logOut} theme="outlined" type="logout" spin style={{ color: '#fff', fontSize: '20px' }} />
         </Col>
       </Row>
     );

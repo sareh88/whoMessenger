@@ -10,14 +10,7 @@ import ContactDetail from '../SideView/contactDetail';
 import MessagesLog from '../ChatApp/messagesLog';
 import NewMessage from '../ChatApp/newMessage';
 import { fetchContactList } from '../Store/actions/userActions';
-
-// import '../../style.css';
-
-// import Grid from 'material-ui/Grid';
-// import Paper from 'material-ui/Paper';
-
-import SideView from '../SideView/contaoner/SideView';
-import 'antd/dist/antd.css';
+import SideView from '../SideView/container/SideView';
 import './stylesheets/App.scss';
 
 const { Header, Footer, Sider, Content } = Layout;
@@ -203,7 +196,7 @@ class App extends Component {
       <Row>
         <Col span={24}>
           <Layout className="layout-container">
-            <Sider theme="dark" width={350}>
+            <Sider theme="light" width={350}>
               <SideView
                 avatarURL={avatarURL}
                 friendsList={this.props.contactList}

@@ -3,7 +3,7 @@ import { Row, Col } from 'antd';
 import InfiniteScroll from 'react-infinite-scroller';
 import ContactList from '../contactList';
 import SideViewHeader from '../SideViewHeader';
-import SearchBar from '../FriendsSearchBar';
+import SearchBar from '../SearchBar';
 
 import '../stylesheets/SideView.scss';
 
@@ -13,7 +13,7 @@ class SideView extends Component {
   };
 
   render() {
-    const { friendsList, avatarURL, userId ,user} = this.props;
+    const { friendsList, avatarURL, userId, user } = this.props;
     return (
       <Row className="sideBarContactListComponent" justify="space-between" type="flex">
         <Col span={24}>

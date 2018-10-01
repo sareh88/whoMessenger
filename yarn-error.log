@@ -1,8 +1,8 @@
 Arguments: 
-  /usr/local/bin/node /Users/sarehalmaaz/.yarn/bin/yarn.js start
+  /usr/local/bin/node /Users/sarehalmaaz/.yarn/bin/yarn.js add transform-decorators-legacy --dev
 
 PATH: 
-  /Users/sarehalmaaz/.yarn/bin:/Users/sarehalmaaz/.config/yarn/global/node_modules/.bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+  /Users/sarehalmaaz/.yarn/bin:/Users/sarehalmaaz/.config/yarn/global/node_modules/.bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/sarehalmaaz/.yarn/bin:/Users/sarehalmaaz/.config/yarn/global/node_modules/.bin
 
 Yarn version: 
   1.9.4
@@ -14,13 +14,17 @@ Platform:
   darwin x64
 
 Trace: 
-  SyntaxError: /Users/sarehalmaaz/Desktop/whoMessenger/whoMessengerMain/whoMessenger/package.json: Unexpected token / in JSON at position 157
-      at JSON.parse (<anonymous>)
-      at /Users/sarehalmaaz/.yarn/lib/cli.js:1130:59
-      at Generator.next (<anonymous>)
-      at step (/Users/sarehalmaaz/.yarn/lib/cli.js:92:30)
-      at /Users/sarehalmaaz/.yarn/lib/cli.js:103:13
-      at <anonymous>
+  Error: https://registry.yarnpkg.com/transform-decorators-legacy: Not found
+      at Request.params.callback [as _callback] (/Users/sarehalmaaz/.yarn/lib/cli.js:64202:18)
+      at Request.self.callback (/Users/sarehalmaaz/.yarn/lib/cli.js:137468:22)
+      at emitTwo (events.js:126:13)
+      at Request.emit (events.js:214:7)
+      at Request.<anonymous> (/Users/sarehalmaaz/.yarn/lib/cli.js:138440:10)
+      at emitOne (events.js:116:13)
+      at Request.emit (events.js:211:7)
+      at IncomingMessage.<anonymous> (/Users/sarehalmaaz/.yarn/lib/cli.js:138362:12)
+      at Object.onceWrapper (events.js:313:30)
+      at emitNone (events.js:111:20)
 
 npm manifest: 
   {
@@ -31,7 +35,7 @@ npm manifest:
       "node": "v8.11.1"
     },
     "scripts": {
-      "start":  "yarn run reac",//"concurrently --kill-others  \"yarn run server\"  \"yarn run socket\" \"yarn run react\"",
+      "start": "concurrently --kill-others  \"yarn run server\"  \"yarn run socket\" \"yarn run react\"",
       "heroku-postbuild": "npm run build",
       "server": "nodemon app.js",
       "socket": "nodemon index.js",
@@ -43,7 +47,7 @@ npm manifest:
     "author": "Sareh Almaaz <sareh.almaaz@comjoo.com>",
     "license": "MIT",
     "private": true,
-    "dependencies": {
+    "devDependencies": {
       "@babel/runtime": "^7.0.0",
       "@material-ui/core": "^3.1.0",
       "antd": "^3.9.3",
@@ -54,6 +58,7 @@ npm manifest:
       "babel-jest": "20.0.3",
       "babel-loader": "7.1.2",
       "babel-preset-react-app": "^3.1.0",
+      "babel-plugin-react-html-attrs": "^2.1.0",
       "babel-runtime": "6.26.0",
       "bcryptjs": "^2.4.3",
       "body-parser": "^1.18.2",
@@ -66,6 +71,16 @@ npm manifest:
       "dotenv": "4.0.0",
       "emoji-js": "^3.4.0",
       "emoji-picker-react": "^2.0.2",
+      "eslint": "^5.6.0",
+      "eslint-config-airbnb": "^17.1.0",
+      "eslint-config-react-app": "^2.1.0",
+      "eslint-loader": "^2.1.1",
+      "eslint-plugin-flowtype": "^2.50.1",
+      "eslint-plugin-import": "^2.14.0",
+      "eslint-plugin-jsx-a11y": "^6.1.1",
+      "eslint-plugin-promise": "^4.0.1",
+      "eslint-plugin-react": "^7.11.1",
+      "eslint-plugin-react-native": "3.2.1",
       "express": "^4.16.2",
       "express-session": "^1.15.6",
       "extract-text-webpack-plugin": "3.0.2",
@@ -78,6 +93,10 @@ npm manifest:
       "jest": "20.0.4",
       "jsonwebtoken": "^8.1.1",
       "jwt-decode": "^2.2.0",
+      "less": "3.0.4",
+      "less-loader": "4.1.0",
+      "less-vars-to-js": "1.2.1",
+      "lodash": "4.17.10",
       "material-ui": "1.0.0-beta.45",
       "material-ui-icons": "^1.0.0-beta.17",
       "material-ui-pickers": "^1.0.0-beta.12",
@@ -86,6 +105,7 @@ npm manifest:
       "mongoose": "^4.13.2",
       "multiparty": "^4.1.3",
       "next": "^7.0.0",
+      "node-sass": "^4.9.3",
       "nodemon": "^1.14.8",
       "object-assign": "4.1.1",
       "passport": "^0.4.0",
@@ -116,6 +136,7 @@ npm manifest:
       "react-router-redux": "^5.0.0-alpha.9",
       "redux": "^3.7.2",
       "redux-thunk": "^2.2.0",
+      "sass-loader": "^7.1.0",
       "socket.io": "^2.0.4",
       "socket.io-client": "*",
       "style-loader": "0.19.0",
@@ -126,20 +147,6 @@ npm manifest:
       "webpack-dev-server": "2.9.4",
       "webpack-manifest-plugin": "1.3.2",
       "whatwg-fetch": "2.0.3"
-    },
-    "devDependencies": {
-      "node-sass": "^4.9.3",
-      "sass-loader": "^7.1.0",
-      "eslint": "^5.6.0",
-      "eslint-config-airbnb": "^17.1.0",
-      "eslint-config-react-app": "^2.1.0",
-      "eslint-loader": "^2.1.1",
-      "eslint-plugin-flowtype": "^2.50.1",
-      "eslint-plugin-import": "^2.14.0",
-      "eslint-plugin-jsx-a11y": "^6.1.1",
-      "eslint-plugin-promise": "^4.0.1",
-      "eslint-plugin-react": "^7.11.1",
-      "eslint-plugin-react-native": "3.2.1"
     },
     "jest": {
       "collectCoverageFrom": [
@@ -178,7 +185,19 @@ npm manifest:
     "babel": {
       "presets": [
         "react-app"
-      ]
+      ],
+      "plugins": [
+        "react-html-attrs",
+        "transform-decorators-legacy",
+        [
+          "import",
+          {
+            "libraryName": "antd",
+            "style": true
+          }
+        ]
+      ],
+      "retainLines": true
     }
   }
 
@@ -1818,6 +1837,10 @@ Lockfile:
     version "20.0.3"
     resolved "https://registry.yarnpkg.com/babel-plugin-jest-hoist/-/babel-plugin-jest-hoist-20.0.3.tgz#afedc853bd3f8dc3548ea671fbe69d03cc2c1767"
   
+  babel-plugin-react-html-attrs@^2.1.0:
+    version "2.1.0"
+    resolved "https://registry.yarnpkg.com/babel-plugin-react-html-attrs/-/babel-plugin-react-html-attrs-2.1.0.tgz#ec92006bca1d07e07d27823afae86dac33fabad5"
+  
   babel-plugin-react-require@3.0.0:
     version "3.0.0"
     resolved "https://registry.yarnpkg.com/babel-plugin-react-require/-/babel-plugin-react-require-3.0.0.tgz#2e4e7b4496b93a654a1c80042276de4e4eeb20e3"
@@ -2936,6 +2959,10 @@ Lockfile:
     version "1.0.4"
     resolved "https://registry.yarnpkg.com/clone/-/clone-1.0.4.tgz#da309cc263df15994c688ca902179ca3c7cd7c7e"
   
+  clone@^2.1.1:
+    version "2.1.2"
+    resolved "https://registry.yarnpkg.com/clone/-/clone-2.1.2.tgz#1b7f4b9f591f1e8f83670401600345a02887435f"
+  
   cmd-shim@^2.0.2, cmd-shim@~2.0.2:
     version "2.0.2"
     resolved "https://registry.yarnpkg.com/cmd-shim/-/cmd-shim-2.0.2.tgz#6fcbda99483a8fd15d7d30a196ca69d688a2efdb"
@@ -4019,7 +4046,7 @@ Lockfile:
     version "1.1.2"
     resolved "https://registry.yarnpkg.com/err-code/-/err-code-1.1.2.tgz#06e0116d3028f6aef4806849eb0ea6a748ae6960"
   
-  errno@^0.1.2, errno@^0.1.3, errno@~0.1.7:
+  errno@^0.1.1, errno@^0.1.2, errno@^0.1.3, errno@~0.1.7:
     version "0.1.7"
     resolved "https://registry.yarnpkg.com/errno/-/errno-0.1.7.tgz#4684d71779ad39af177e3f007996f7c67c852618"
     dependencies:
@@ -5561,6 +5588,10 @@ Lockfile:
     version "4.0.6"
     resolved "https://registry.yarnpkg.com/ignore/-/ignore-4.0.6.tgz#750e3db5862087b4737ebac8207ffd1ef27b25fc"
   
+  image-size@~0.5.0:
+    version "0.5.5"
+    resolved "https://registry.yarnpkg.com/image-size/-/image-size-0.5.5.tgz#09dfd4ab9d20e29eb1c3e80b8990378df9e3cb9c"
+  
   immutable@^3.7.4:
     version "3.8.2"
     resolved "https://registry.yarnpkg.com/immutable/-/immutable-3.8.2.tgz#c2439951455bb39913daf281376f1530e104adf3"
@@ -6656,6 +6687,31 @@ Lockfile:
     dependencies:
       invert-kv "^1.0.0"
   
+  less-loader@4.1.0:
+    version "4.1.0"
+    resolved "https://registry.yarnpkg.com/less-loader/-/less-loader-4.1.0.tgz#2c1352c5b09a4f84101490274fd51674de41363e"
+    dependencies:
+      clone "^2.1.1"
+      loader-utils "^1.1.0"
+      pify "^3.0.0"
+  
+  less-vars-to-js@1.2.1:
+    version "1.2.1"
+    resolved "https://registry.yarnpkg.com/less-vars-to-js/-/less-vars-to-js-1.2.1.tgz#7d48f096a98f0cbad77d07a242bad2ff14f01934"
+  
+  less@3.0.4:
+    version "3.0.4"
+    resolved "https://registry.yarnpkg.com/less/-/less-3.0.4.tgz#d27dcedbac96031c9e7b76f1da1e4b7d83760814"
+    optionalDependencies:
+      errno "^0.1.1"
+      graceful-fs "^4.1.2"
+      image-size "~0.5.0"
+      mime "^1.4.1"
+      mkdirp "^0.5.0"
+      promise "^7.1.1"
+      request "^2.83.0"
+      source-map "~0.6.0"
+  
   leven@^2.1.0:
     version "2.1.0"
     resolved "https://registry.yarnpkg.com/leven/-/leven-2.1.0.tgz#c2e7a9f772094dee9d34202ae8acce4687875580"
@@ -6928,6 +6984,10 @@ Lockfile:
   lodash.without@~4.4.0:
     version "4.4.0"
     resolved "https://registry.yarnpkg.com/lodash.without/-/lodash.without-4.4.0.tgz#3cd4574a00b67bae373a94b748772640507b7aac"
+  
+  lodash@4.17.10:
+    version "4.17.10"
+    resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.10.tgz#1b7793cf7259ea38fb3661d4d38b3260af8ae4e7"
   
   "lodash@>=3.5 <5", lodash@^4.0.0, lodash@^4.14.0, lodash@^4.15.0, lodash@^4.16.5, lodash@^4.17.10, lodash@^4.17.2, lodash@^4.17.3, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.2.0, lodash@^4.2.1, lodash@^4.3.0, lodash@^4.5.1, lodash@~4.17.10:
     version "4.17.11"
@@ -10243,7 +10303,7 @@ Lockfile:
       tunnel-agent "^0.6.0"
       uuid "^3.1.0"
   
-  request@^2.74.0, request@^2.79.0, request@^2.87.0, request@^2.88.0:
+  request@^2.74.0, request@^2.79.0, request@^2.83.0, request@^2.87.0, request@^2.88.0:
     version "2.88.0"
     resolved "https://registry.yarnpkg.com/request/-/request-2.88.0.tgz#9c2fca4f7d35b592efe57c7f0a55e81052124fef"
     dependencies:
