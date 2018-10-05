@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import List, { ListItem, ListItemText } from 'material-ui/List';
-import { Row, Col, List, message, Avatar, Spin } from 'antd';
+import { Row, Col, List, Avatar } from 'antd';
 import InfiniteScroll from 'react-infinite-scroller';
 import decode from 'jwt-decode';
 import { connect } from 'react-redux';

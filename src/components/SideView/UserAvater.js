@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Avatar } from 'antd';
 import { Row, Col } from 'antd';
 import config from '../../config/config';
@@ -12,13 +13,13 @@ class UserAvater extends React.Component {
 
   render() {
     const { userProfile } = this.props;
-    console.log(userProfile.avatarURL);
-    const url = `${config.BASE_URL}images/avatars/${userProfile.avatarURL}`;
+    console.log(userProfile && userProfile.avatarURL);
+    const url = `${config.BASE_URL}images/avatars/${userProfile && userProfile.avatarURL}`;
     const { firstName, lastName } = userProfile;
     return (
       <Row align="middle" className="user-avatar" justify="center" type="flex">
         <Col span={10}>
-          <Avatar alt={firstName} className="avatar" icon="user" size="large" src={url} />
+          <Avatar className="avatar" icon="user" size="large" src={url} />
         </Col>
         <Col span={15}>
           <h5>{`${firstName}${lastName}`}</h5>
@@ -27,5 +28,9 @@ class UserAvater extends React.Component {
     );
   }
 }
+
+UserAvater.propTypes = {
+  userProfile: PropTypes.object.isRequired,
+};
 
 export default UserAvater;

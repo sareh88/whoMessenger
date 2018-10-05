@@ -200,8 +200,8 @@ class App extends Component {
               <SideView
                 avatarURL={avatarURL}
                 friendsList={this.props.contactList}
-                userId={this.getSocketChanelId.bind(this)}
                 user={user}
+                userId={this.getSocketChanelId.bind(this)}
               />
             </Sider>
             <Layout>

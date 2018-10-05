@@ -4,7 +4,7 @@ import decode from 'jwt-decode';
 
 import './stylesheets/MessageBaloun.scss';
 
-class ContactDetail extends Component {
+class MessageBaloun extends Component {
   state = {
     test: null,
   };
@@ -38,4 +38,4 @@ class ContactDetail extends Component {
   }
 }
 
-export default ContactDetail;
+export default MessageBaloun;

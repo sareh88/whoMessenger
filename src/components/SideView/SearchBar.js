@@ -14,38 +14,17 @@ const mapDispatchToProps = dispatch => ({
 
 class SearchBar extends Component {
   state = {
-    open: false,
-    contactAddOpen: false,
-    anchorEl: null,
-    anchorOriginVertical: 'bottom',
-    anchorOriginHorizontal: 'center',
-    transformOriginVertical: 'top',
-    transformOriginHorizontal: 'center',
-    positionTop: 200, // Just so the popover can be spotted more easily
-    positionLeft: 400, // Same as above
-    anchorReference: 'anchorEl',
+    showModal: false,
   };
 
   handleClickOpen = () => {
-    this.setState({ contactAddOpen: true });
-  };
-
-  handleClickClose = () => {
-    this.setState({
-      contactAddOpen: false,
-    });
+    this.setState({ showModal: true });
   };
 
   handleClickButton = () => {
     this.setState({
       open: true,
       anchorEl: findDOMNode(this.button),
-    });
-  };
-
-  handleClose = () => {
-    this.setState({
-      open: false,
     });
   };
 
@@ -56,95 +35,29 @@ class SearchBar extends Component {
 
   render() {
     const Search = Input.Search;
-    const {
-      open,
-      anchorEl,
-      anchorOriginVertical,
-      anchorOriginHorizontal,
-      transformOriginVertical,
-      transformOriginHorizontal,
-      positionTop,
-      positionLeft,
-      anchorReference,
-    } = this.state;
+    const { showModal } = this.state;
     return (
       <Row className="search-bar-container">
         <Col push={1} span={16}>
-          <Search onSearch={e => this.searchFriends(e)} style={{ width: 200 }} />
+          <Search style={{ width: 200 }} onSearch={e => this.searchFriends(e)} />
         </Col>
         <Col className="add-contact-icon" push={4} span={4}>
-          <Icon style={{ color: '#fff', fontSize: '20px', marginLeft: '10px' }} theme="outlined" type="user-add" />
+          <Icon
+            style={{ color: '#fff', fontSize: '20px', marginLeft: '10px' }}
+            theme="outlined"
+            type="user-add"
+            onClick={() => this.linkDialog.open()}
+          />
         </Col>
-      </Row>
-      /* <div>
-        <AppBar
-          style={{
-            position: 'relative',
-            height: 65,
-            backgroundColor: '#726F6F',
-            color: 'white',
-            boxShadow: 'none',
+        <FormDialog
+          ref={(elem) => {
+            this.linkDialog = elem;
           }}
-        >
-          <Toolbar className="friend-search-bar">
-            <IconButton
-              ref={(node) => {
-                this.button = node;
-              }}
-              aria-label="Menu"
-              id="cypress-friend-search-button"
-              onClick={this.handleClickButton}
-              style={{ position: 'absolute', top: 9, left: 2 }}
-            >
-              <i className="material-icons">search</i>
-            </IconButton>
-
-            <Popover
-              anchorEl={anchorEl}
-              anchorOrigin={{
-                vertical: anchorOriginVertical,
-                horizontal: anchorOriginHorizontal,
-              }}
-              anchorPosition={{ top: positionTop, left: positionLeft }}
-              anchorReference={anchorReference}
-              onClose={this.handleClose}
-              open={open}
-              transformOrigin={{
-                vertical: transformOriginVertical,
-                horizontal: transformOriginHorizontal,
-              }}
-            >
-              <FormControl className="open-search-bar">
-                <InputLabel htmlFor="searchContact">search</InputLabel>
-                <Input
-                  id="searchContact"
-                  onChange={(e) => {
-                    this.searchFriends(e);
-                  }}
-                  type="text"
-                  value={this.state.searchKeyword}
-                />
-              </FormControl>
-            </Popover>
-            <IconButton
-              aria-label="Menu"
-              id="cypress-add-freind"
-              onClick={this.handleClickOpen}
-              style={{ position: 'absolute', top: 7, right: 2 }}
-            >
-              <i className="material-icons">add_circle</i>
-            </IconButton>
-            <FormDialog
-              autoScrollBodyContent={false}
-              compo={<AddContact />}
-              fullScreen={false}
-              handleClickOpen={this.handleClickOpen}
-              handleClose={this.handleClickClose}
-              open={this.state.contactAddOpen}
-            />
-          </Toolbar>
-        </AppBar>
-      </div> */
+          ModalContent={<AddContact />}
+          title={<h3>Add new friend</h3>}
+          visible={showModal}
+        />
+      </Row>
     );
   }
 }

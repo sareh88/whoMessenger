@@ -1,29 +1,10 @@
 import React, { Component } from 'react';
-import List, { ListItem, ListItemText } from 'material-ui/List';
-// import IconButton from "material-ui/IconButton";
+import { Row, Col, List, Avatar, Icon } from 'antd';
+import InfiniteScroll from 'react-infinite-scroller';
 import uuidv1 from 'uuid/v1';
-// import FriendConfirmation from "./addFriendConfirmation";
-import AddIcon from 'material-ui-icons/Add';
-// import Icon from 'material-ui/Icon';
-import Button from 'material-ui/Button';
 import config from '../../config/config';
-import Avatar from './UserAvater';
 
-const styles = theme => ({
-  root: {
-    // width: '100%',
-    backgroundColor: '#fff',
-  },
-  button: {
-    minWidth: 10,
-    height: '46px',
-    width: '46px',
-    borderRadius: '50%',
-    fontSize: 24,
-    backgroundColor: '#0d56a5',
-    color: '#fff',
-  },
-});
+import './stylesheets/SearchList.scss';
 
 class SearchList extends Component {
   constructor() {
@@ -69,44 +50,25 @@ class SearchList extends Component {
   };
 
   render() {
-    const who = null;
-
-    let listItems = '';
-    if (this.props.users !== '') {
-      listItems = this.props.users.usersList.map(item => (
-        // let avatarURL = `${config.BASE_URL}images/avatars/${newAvatar}`;
-        // console.log(item,`${config.BASE_URL}images/avatars/${item.profile.avatarURL}`)
-        <ListItem
-          key={item._id}
-          button
-          className="list-item"
-          dense
-          onClick={() => {
-            this.requestFriends(item);
-            // this.handleClickOpen();
-          }}
-        >
-          <Avatar avatar={`${config.BASE_URL}images/avatars/${item.profile.avatarURL}`} size={45} />
-          <ListItemText primary={`${item.profile.firstName} ${item.profile.lastName}`} />
-          <Button
-            aria-label="Add"
-            className={styles.button}
-            color="primary"
-            onClick={() => {
-              this.requestFriends(item);
-
-              // this.handleClickOpen();
-            }}
-            variant="fab"
-          >
-            <AddIcon />
-          </Button>
-        </ListItem>
-      ));
-    }
+    const { users } = this.props;
     return (
-      <div className={styles.root} id="friend-list">
-        <List>{listItems}</List>
+      <div>
+        <InfiniteScroll initialLoad={false} pageStart={0} useWindow={false}>
+          <List
+            dataSource={users.usersList}
+            renderItem={item => (
+              <List.Item key={item._id}>
+                <List.Item.Meta
+                  avatar={<Avatar src={`${config.BASE_URL}images/avatars/${item.profile.avatarURL}`} />}
+                  title={`${item.profile.firstName}${item.profile.lastName}`}
+                />
+                <div>
+                  <Icon theme="outlined" type="plus" />
+                </div>
+              </List.Item>
+            )}
+          />
+        </InfiniteScroll>
       </div>
     );
   }

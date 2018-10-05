@@ -60,7 +60,7 @@ class SideViewHeader extends Component {
             spin
             style={{ color: '#fff', fontSize: '20px' }}
           />
-          <FormDialog compo={<ProfileSettings />} handleClose={this.handleClose} open={this.state.open} />
+          <FormDialog handleClose={this.handleClose} ModalContent={<ProfileSettings />} open={this.state.open} />
         </Col>
         <Col span={14}>
           <UserAvater userProfile={profile} />

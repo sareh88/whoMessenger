@@ -1,23 +1,21 @@
 import React, { Component } from 'react';
-import IconButton from 'material-ui/IconButton';
-// import Input from "material-ui/Input";
+import { Input } from 'antd';
 import SearchList from './searchList';
-import TextField from 'material-ui/TextField';
-// import { CircularProgress } from 'material-ui/Progress';
-// import { FormControl, FormHelperText } from 'material-ui/Form';
+
+const Search = Input.Search;
 class AddContact extends Component {
   constructor() {
     super();
     this.state = {
-      users: '',
+      users: null,
       error: '',
     };
-    this.btnSearchClicked = this.btnSearchClicked.bind(this);
+    this.onSearchContact = this.onSearchContact.bind(this);
   }
 
-  btnSearchClicked() {
+  onSearchContact(value) {
     const token = localStorage.getItem('token');
-    const searchValue = this.txtSearchInput.value;
+    const searchValue = value;
     if (searchValue !== '') {
       fetch(`http://localhost:3001/user/contacts/search/${searchValue}`, {
         headers: { Authorization: `TOKEN ${token}` },
@@ -34,40 +32,14 @@ class AddContact extends Component {
       this.setState({ error: 'please insert a name' });
     }
   }
+
   render() {
-    // let error = this.state.error ? <div>{this.state.error}</div> : <div> </div>
+    const { users } = this.state;
     return (
       <div style={{ height: 500, width: 400 }}>
-        <TextField
-          helperText={this.state.error}
-          id="cypress-add-new"
-          inputRef={(thisInput) => {
-            this.txtSearchInput = thisInput;
-          }}
-          label="Search For a Friends"
-          onKeyDown={(e) => {
-            if (e.keyCode === 13) {
-              this.btnSearchClicked();
-            }
-          }}
-          style={{ width: '80%', marginLeft: 35 }}
-        />
+        <Search enterButton placeholder="input search text" onSearch={value => this.onSearchContact(value)} />
 
-        <IconButton
-          aria-label="Menu"
-          id="cypress-ser-new-freind"
-          onClick={this.btnSearchClicked}
-          style={{
-            position: 'absolute',
-            top: 25,
-            right: 60,
-            backgroundColor: 'rgba(8,6,6,0)',
-          }}
-        >
-          <i className="material-icons">search</i>
-        </IconButton>
-
-        <SearchList users={this.state.users} />
+        {users !== null ? <SearchList users={users} /> : null}
       </div>
     );
   }

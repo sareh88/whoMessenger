@@ -12,6 +12,8 @@ class Master extends React.Component {
     test: null,
   };
 
+  renderComponentPageWrappedInstance = Component => props => <Component {...props} />;
+
   render() {
     const { test } = this.state;
     return (
@@ -20,7 +22,12 @@ class Master extends React.Component {
           <Row style={{ minHeight: 'calc(100vh - 80px)' }}>
             <Col span={24} style={{ minHeight: 'calc(100vh - 80px)' }}>
               {routesArray.map(({ exact, path, component }) => (
-                <Route key={path} component={component} exact={exact} path={path} />
+                <Route
+                  key={path}
+                  component={this.renderComponentPageWrappedInstance(component)}
+                  exact={exact}
+                  path={path}
+                />
               ))}
             </Col>
           </Row>
